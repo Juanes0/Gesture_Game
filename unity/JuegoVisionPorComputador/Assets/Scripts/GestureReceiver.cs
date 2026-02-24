@@ -5,35 +5,43 @@ using System.Text;
 using System.Threading;
 using UnityEngine;
 
-
+/// <summary>
+/// GestureReceiver v2 — recibe mensajes UDP con formato "P1:JUMP", "P2:LEFT", etc.
+/// y dispara eventos separados para cada jugador.
+///
+/// SETUP:
+///   1. Crea un GameObject vacío → "GestureManager"
+///   2. Adjunta este script
+/// </summary>
 public class GestureReceiver : MonoBehaviour
 {
     [Header("Configuración UDP")]
-    [Tooltip("Puerto UDP — debe coincidir con gesture_sender.py")]
     public int port = 5052;
 
-    // ── Eventos públicos ────────────────────────────────────────────────────
-    // Otros scripts se suscriben así:
-    //   GestureReceiver.OnGesture += MiMetodo;
-    public static event Action<string> OnGesture;
+    // ── Eventos por jugador ─────────────────────────────────────────────────
+    // Uso: GestureReceiver.OnGestureP1 += MiMetodo;
+    public static event Action<string> OnGestureP1;
+    public static event Action<string> OnGestureP2;
 
     // ── Variables internas ──────────────────────────────────────────────────
-    private UdpClient    udpClient;
-    private Thread       receiveThread;
-    private bool         isRunning = false;
-    private string       lastGesture = "";
-    private bool         newGesture  = false;   // flag para hilo principal
+    private UdpClient udpClient;
+    private Thread receiveThread;
+    private bool isRunning = false;
 
-    // ── Unity: iniciar ──────────────────────────────────────────────────────
+    // Buffer thread-safe para pasar mensajes al hilo principal
+    private string pendingPlayer = null;
+    private string pendingMessage = null;
+    private readonly object bufferLock = new object();
+
     void Start()
     {
         try
         {
-            udpClient  = new UdpClient(port);
-            isRunning  = true;
+            udpClient = new UdpClient(port);
+            isRunning = true;
             receiveThread = new Thread(ReceiveLoop) { IsBackground = true };
             receiveThread.Start();
-            Debug.Log($"[GestureReceiver] Escuchando UDP en puerto {port}");
+            Debug.Log($"[GestureReceiver] Escuchando en puerto {port} — modo 2 jugadores");
         }
         catch (Exception e)
         {
@@ -41,8 +49,7 @@ public class GestureReceiver : MonoBehaviour
         }
     }
 
-    // ── Hilo secundario: recibir paquetes UDP ───────────────────────────────
-    // ⚠️ No llamar a APIs de Unity desde aquí (solo desde el hilo principal).
+    // ── Hilo secundario: recibir paquetes ───────────────────────────────────
     void ReceiveLoop()
     {
         IPEndPoint remoteEP = new IPEndPoint(IPAddress.Any, 0);
@@ -51,19 +58,24 @@ public class GestureReceiver : MonoBehaviour
         {
             try
             {
-                byte[] data    = udpClient.Receive(ref remoteEP);
+                byte[] data = udpClient.Receive(ref remoteEP);
                 string message = Encoding.UTF8.GetString(data).Trim();
 
-                if (!string.IsNullOrEmpty(message))
+                // Formato esperado: "P1:JUMP", "P2:LEFT", etc.
+                if (!string.IsNullOrEmpty(message) && message.Contains(":"))
                 {
-                    lastGesture = message;
-                    newGesture  = true;   // el hilo principal lo procesará en Update()
+                    string[] parts = message.Split(':');
+                    if (parts.Length == 2)
+                    {
+                        lock (bufferLock)
+                        {
+                            pendingPlayer = parts[0];   // "P1" o "P2"
+                            pendingMessage = parts[1];   // "JUMP", "LEFT", etc.
+                        }
+                    }
                 }
             }
-            catch (SocketException)
-            {
-                // Se lanza al cerrar el socket — es normal, ignorar.
-            }
+            catch (SocketException) { }
             catch (Exception e)
             {
                 Debug.LogWarning($"[GestureReceiver] {e.Message}");
@@ -71,24 +83,27 @@ public class GestureReceiver : MonoBehaviour
         }
     }
 
-    // ── Unity: hilo principal — procesar gestos recibidos ───────────────────
+    // ── Hilo principal: despachar eventos ───────────────────────────────────
     void Update()
     {
-        if (newGesture)
+        string player, msg;
+
+        lock (bufferLock)
         {
-            newGesture = false;
-            ProcessGesture(lastGesture);
+            if (pendingPlayer == null) return;
+            player = pendingPlayer;
+            msg = pendingMessage;
+            pendingPlayer = null;
         }
+
+        Debug.Log($"[GestureReceiver] {player} → {msg}");
+
+        if (player == "P1")
+            OnGestureP1?.Invoke(msg);
+        else if (player == "P2")
+            OnGestureP2?.Invoke(msg);
     }
 
-    // ── Procesar gesto y disparar evento ───────────────────────────────────
-    void ProcessGesture(string gesture)
-    {
-        Debug.Log($"[GestureReceiver] Gesto recibido: {gesture}");
-        OnGesture?.Invoke(gesture);   // notifica a todos los suscriptores
-    }
-
-    // ── Unity: limpiar al cerrar ────────────────────────────────────────────
     void OnDestroy()
     {
         isRunning = false;

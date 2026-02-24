@@ -1,50 +1,97 @@
 using UnityEngine;
 
 /// <summary>
-/// GestureActions — reacciona a los gestos recibidos por GestureReceiver.
+/// GestureActions v3 — Plataformero 2 jugadores
 ///
-/// SETUP RÁPIDO DE PRUEBA:
-///   1. Crea un Sprite 2D (ej: un cuadrado) en la escena.
-///   2. Añade un Rigidbody2D al sprite.
-///   3. Adjunta este script al sprite.
-///   4. Asegúrate de que GestureReceiver también existe en la escena.
+/// SETUP:
+///   1. Crea dos sprites en la escena (Jugador1 y Jugador2)
+///   2. A cada uno: Add Component → Rigidbody2D + BoxCollider2D + este script
+///   3. En el Inspector de cada uno, selecciona el Player Number:
+///      → Jugador1: Player Number = Player1
+///      → Jugador2: Player Number = Player2
+///   4. Rigidbody2D en ambos:
+///      - Gravity Scale: 3
+///      - Constraints → Freeze Rotation Z ✅
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class GestureActions : MonoBehaviour
 {
-    [Header("Parámetros de movimiento")]
-    public float jumpForce  = 8f;
-    public float attackTime = 0.2f;   // segundos que el objeto cambia de color
+    // ── Inspector ────────────────────────────────────────────────────────────
+    public enum PlayerNumber { Player1, Player2 }
 
-    private Rigidbody2D   rb;
+    [Header("Jugador")]
+    public PlayerNumber playerNumber = PlayerNumber.Player1;
+
+    [Header("Movimiento")]
+    public float moveSpeed = 5f;
+    public float jumpForce = 12f;
+
+    [Header("Proyectil (opcional)")]
+    public GameObject bulletPrefab;
+    public float bulletSpeed = 10f;
+
+    [Header("Feedback visual")]
+    public float flashTime = 0.2f;
+
+    // ── Componentes ──────────────────────────────────────────────────────────
+    private Rigidbody2D rb;
     private SpriteRenderer sr;
-    private Color         originalColor;
-    private bool          isGrounded = true;
+    private Color originalColor;
 
+    // ── Estado ───────────────────────────────────────────────────────────────
+    private float moveDirection = 0f;
+    private bool isGrounded = false;
+    private bool facingRight = true;
+
+    // ── Unity ────────────────────────────────────────────────────────────────
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        originalColor = sr.color;
 
-        if (sr != null)
-            originalColor = sr.color;
+        // Suscribirse al evento del jugador correcto
+        if (playerNumber == PlayerNumber.Player1)
+            GestureReceiver.OnGestureP1 += HandleGesture;
+        else
+            GestureReceiver.OnGestureP2 += HandleGesture;
 
-        // Suscribirse al evento de gestos
-        GestureReceiver.OnGesture += HandleGesture;
-        Debug.Log("[GestureActions] Suscrito a gestos.");
+        Debug.Log($"[GestureActions] {playerNumber} listo.");
     }
 
     void OnDestroy()
     {
-        // Siempre desuscribirse para evitar memory leaks
-        GestureReceiver.OnGesture -= HandleGesture;
+        if (playerNumber == PlayerNumber.Player1)
+            GestureReceiver.OnGestureP1 -= HandleGesture;
+        else
+            GestureReceiver.OnGestureP2 -= HandleGesture;
     }
 
-    // ── Reaccionar al gesto ─────────────────────────────────────────────────
-    void HandleGesture(string gesture)
+    void FixedUpdate()
     {
-        switch (gesture.ToUpper())
+        rb.linearVelocity = new Vector2(moveDirection * moveSpeed, rb.linearVelocity.y);
+    }
+
+    // ── Procesar mensaje del jugador ─────────────────────────────────────────
+    void HandleGesture(string msg)
+    {
+        switch (msg.ToUpper())
         {
+            case "LEFT":
+                moveDirection = -1f;
+                Flip(false);
+                break;
+
+            case "RIGHT":
+                moveDirection = 1f;
+                Flip(true);
+                break;
+
+            case "STOP":
+                moveDirection = 0f;
+                break;
+
             case "JUMP":
                 DoJump();
                 break;
@@ -56,64 +103,59 @@ public class GestureActions : MonoBehaviour
             case "SHOOT":
                 DoShoot();
                 break;
-
-            default:
-                Debug.Log($"[GestureActions] Gesto desconocido: {gesture}");
-                break;
         }
     }
 
-    // ── Acciones ────────────────────────────────────────────────────────────
+    // ── Acciones ─────────────────────────────────────────────────────────────
     void DoJump()
     {
         if (!isGrounded) return;
-
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);   // resetear Y
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         isGrounded = false;
-
-        Debug.Log("¡SALTO!");
+        Debug.Log($"[{playerNumber}] SALTO");
     }
 
     void DoAttack()
     {
-        Debug.Log("¡ATAQUE!");
-
-        // Feedback visual: cambiar color brevemente a rojo
-        if (sr != null)
-        {
-            sr.color = Color.red;
-            Invoke(nameof(ResetColor), attackTime);
-        }
-
-        // TODO: aquí añadirás la lógica real de ataque (hitbox, animación, etc.)
+        Debug.Log($"[{playerNumber}] ATAQUE");
+        sr.color = Color.red;
+        Invoke(nameof(ResetColor), flashTime);
+        // TODO: activar hitbox
     }
 
     void DoShoot()
     {
-        Debug.Log("¡DISPARO!");
+        Debug.Log($"[{playerNumber}] DISPARO");
+        sr.color = Color.yellow;
+        Invoke(nameof(ResetColor), flashTime);
 
-        // Feedback visual: cambiar color a amarillo
-        if (sr != null)
-        {
-            sr.color = Color.yellow;
-            Invoke(nameof(ResetColor), attackTime);
-        }
+        if (bulletPrefab == null) return;
 
-        // TODO: aquí instanciarás el proyectil
+        Vector3 spawnPos = transform.position + new Vector3(facingRight ? 0.6f : -0.6f, 0f, 0f);
+        GameObject bullet = Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
+
+        Rigidbody2D bRb = bullet.GetComponent<Rigidbody2D>();
+        if (bRb != null)
+            bRb.linearVelocity = new Vector2(facingRight ? bulletSpeed : -bulletSpeed, 0f);
+
+        Destroy(bullet, 3f);
     }
 
-    void ResetColor()
+    void Flip(bool toRight)
     {
-        if (sr != null)
-            sr.color = originalColor;
+        if (facingRight == toRight) return;
+        facingRight = toRight;
+        sr.flipX = !toRight;
     }
 
-    // ── Detectar suelo ──────────────────────────────────────────────────────
+    void ResetColor() => sr.color = originalColor;
+
     void OnCollisionEnter2D(Collision2D col)
     {
-        // Cualquier colisión por debajo = suelo
-        if (col.contacts[0].normal.y > 0.5f)
-            isGrounded = true;
+        foreach (ContactPoint2D contact in col.contacts)
+            if (contact.normal.y > 0.5f) { isGrounded = true; return; }
     }
+
+    void OnCollisionExit2D(Collision2D col) => isGrounded = false;
 }
