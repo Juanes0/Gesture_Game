@@ -5,21 +5,15 @@ using System.Text;
 using System.Threading;
 using UnityEngine;
 
-/// <summary>
-/// GestureReceiver v2 — recibe mensajes UDP con formato "P1:JUMP", "P2:LEFT", etc.
-/// y dispara eventos separados para cada jugador.
-///
-/// SETUP:
-///   1. Crea un GameObject vacío → "GestureManager"
-///   2. Adjunta este script
-/// </summary>
+// GestureReceiver v2 — recibe mensajes UDP con formato "P1:JUMP", "P2:LEFT", etc.
+// y dispara eventos separados para cada jugador.
+
 public class GestureReceiver : MonoBehaviour
 {
     [Header("Configuración UDP")]
     public int port = 5052;
 
     // ── Eventos por jugador ─────────────────────────────────────────────────
-    // Uso: GestureReceiver.OnGestureP1 += MiMetodo;
     public static event Action<string> OnGestureP1;
     public static event Action<string> OnGestureP2;
 

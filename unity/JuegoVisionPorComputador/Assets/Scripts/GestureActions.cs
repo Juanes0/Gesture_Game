@@ -1,18 +1,7 @@
 using UnityEngine;
 
-/// <summary>
-/// GestureActions v3 — Plataformero 2 jugadores
-///
-/// SETUP:
-///   1. Crea dos sprites en la escena (Jugador1 y Jugador2)
-///   2. A cada uno: Add Component → Rigidbody2D + BoxCollider2D + este script
-///   3. En el Inspector de cada uno, selecciona el Player Number:
-///      → Jugador1: Player Number = Player1
-///      → Jugador2: Player Number = Player2
-///   4. Rigidbody2D en ambos:
-///      - Gravity Scale: 3
-///      - Constraints → Freeze Rotation Z ✅
-/// </summary>
+// GestureActions v3 — Plataformero 2 jugadores
+
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 public class GestureActions : MonoBehaviour
@@ -27,7 +16,7 @@ public class GestureActions : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 12f;
 
-    [Header("Proyectil (opcional)")]
+    [Header("Proyectil")]
     public GameObject bulletPrefab;
     public float bulletSpeed = 10f;
 
