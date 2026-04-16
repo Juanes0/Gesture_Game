@@ -18,6 +18,9 @@ hands      = mp_hands.Hands(
     min_tracking_confidence  = 0.6
 )
 
+COOLDOWN_POSICION   = 0.033   # ~60 fps (puedes subir a 0.033 si quieres menos tráfico)
+COOLDOWN_GESTO      = 0.4
+
 # ── Zonas de movimiento ────────────────────────────────────────────────────────
 
 JUGADORES = {
@@ -28,7 +31,8 @@ JUGADORES = {
         # zonas internas de movimiento
         "right_max"  : 0.83,       # X < 0.67  → RIGHT
         "left_min"   : 0.67,       # X > 0.83  → LEFT
-                                   # entre ambos → STOP
+        "jump_threshold": 0.45,        # Y < 0.4 → JUMP (mano alta)
+        "crouch_threshold": 0.75,      # Y > 0.75 → CROUCH (mano baja)
     },
     "P2": {
         "hand_label" : "Left",
@@ -36,6 +40,8 @@ JUGADORES = {
         "zona_max"   : 0.5,
         "right_max"  : 0.33,       # X < 0.17  → RIGHT
         "left_min"   : 0.17,       # X > 0.33  → LEFT
+        "jump_threshold": 0.45,        # Y < 0.4 → JUMP (mano alta)
+        "crouch_threshold": 0.75,      # Y > 0.75 → CROUCH (mano baja)
     },
 }
 
@@ -44,8 +50,8 @@ COLORES = {"P1": (0, 200, 255), "P2": (255, 130, 0)}
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
 def dedos_extendidos(landmarks):
-    tips  = [4, 8, 12, 16, 20]
-    bases = [2, 6, 10, 14, 18]
+    tips  = [4, 8, 12, 16, 20]  #Puntas
+    bases = [2, 6, 10, 14, 18]  #Nudillos
     estado = []
     for tip, base in zip(tips, bases):
         if tip == 4:
@@ -57,20 +63,12 @@ def dedos_extendidos(landmarks):
 def detectar_gesto(landmarks):
     dedos    = dedos_extendidos(landmarks)
     abiertos = sum(dedos)
-    if abiertos >= 4:
-        return "JUMP"
-    elif abiertos == 0:
+    if abiertos == 0:
         return "ATTACK"
     elif dedos[1] and not dedos[2] and not dedos[3] and not dedos[4]:
         return "SHOOT"
     return None
 
-def detectar_movimiento(munieca_x, config):
-    if munieca_x > config["right_max"]:
-        return "RIGHT"
-    elif munieca_x < config["left_min"]:
-        return "LEFT"
-    return "STOP"
 
 def validar_mano(label_detectado, munieca_x, config):
     """Doble validación: etiqueta MediaPipe + zona de pantalla."""
@@ -78,8 +76,10 @@ def validar_mano(label_detectado, munieca_x, config):
     zona_ok  = (config["zona_min"] <= munieca_x <= config["zona_max"])
     return label_ok and zona_ok
 
-def enviar(jugador, mensaje):
-    sock.sendto(f"{jugador}:{mensaje}".encode('utf-8'), (UDP_IP, UDP_PORT))
+def enviar_estado(jugador, munieca_x, munieca_y, gesto="NONE"):
+    mensaje = f"{jugador}:X:{munieca_x:.3f}:Y:{munieca_y:.3f}:G:{gesto}"
+    sock.sendto(mensaje.encode('utf-8'), (UDP_IP, UDP_PORT))
+
 
 # ── Bucle principal ────────────────────────────────────────────────────────────
 cap = cv2.VideoCapture(0)
@@ -88,8 +88,6 @@ tiempos = {
     "P1": {"gesto": 0, "movimiento": 0},
     "P2": {"gesto": 0, "movimiento": 0},
 }
-COOLDOWN_GESTO      = 0.4
-COOLDOWN_MOVIMIENTO = 0.05
 
 ultimos = {
     "P1": {"gesto": "---", "movimiento": "STOP"},
@@ -102,11 +100,6 @@ print()
 print("Posición frente a la cámara:")
 print("  J1: párate a la IZQUIERDA, usa tu mano DERECHA")
 print("  J2: párate a la DERECHA,   usa tu mano IZQUIERDA")
-print()
-print("Movimiento (dentro de tu mitad de pantalla):")
-print("  Mano en zona izquierda  → LEFT")
-print("  Mano en zona central    → STOP")
-print("  Mano en zona derecha    → RIGHT")
 print()
 print("Gestos:")
 print("  Mano abierta ✋  → JUMP")
@@ -163,15 +156,16 @@ while cap.isOpened():
 
             label     = handedness.classification[0].label
             munieca_x = hand_landmarks.landmark[0].x
+            munieca_y = hand_landmarks.landmark[0].y
 
-            # Identificar jugador con doble validación
+            # Identificar jugador
             jugador = None
             for j, cfg in JUGADORES.items():
                 if validar_mano(label, munieca_x, cfg):
                     jugador = j
                     break
 
-            # Mano no reconocida → dibujar en gris y saltar
+            # ── MANO NO RECONOCIDA → dibujar en gris ───────────────────────
             if jugador is None:
                 mp_drawing.draw_landmarks(
                     frame, hand_landmarks, mp_hands.HAND_CONNECTIONS,
@@ -180,29 +174,26 @@ while cap.isOpened():
                 )
                 continue
 
-            # Dibujar con color del jugador
+            # ── MANO VÁLIDA → dibujar con color del jugador ────────────────
+            cfg = JUGADORES[jugador]
             mp_drawing.draw_landmarks(
                 frame, hand_landmarks, mp_hands.HAND_CONNECTIONS,
                 mp_drawing.DrawingSpec(color=COLORES[jugador], thickness=2, circle_radius=4),
                 mp_drawing.DrawingSpec(color=(255,255,255), thickness=2)
             )
 
-            cfg = JUGADORES[jugador]
+            # ── Enviar posición siempre (nuevo sistema) ─────────────────────
+            gesto_actual = detectar_gesto(hand_landmarks.landmark) or "NONE"
 
-            # ── Movimiento continuo ──────────────────────────────────────
-            movimiento = detectar_movimiento(munieca_x, cfg)
-            if (ahora - tiempos[jugador]["movimiento"]) > COOLDOWN_MOVIMIENTO:
-                enviar(jugador, movimiento)
-                ultimos[jugador]["movimiento"]     = movimiento
-                tiempos[jugador]["movimiento"]     = ahora
+            if (ahora - tiempos[jugador]["movimiento"]) > COOLDOWN_POSICION:
+                enviar_estado(jugador, munieca_x, munieca_y, gesto_actual)
+                tiempos[jugador]["movimiento"] = ahora
 
-            # ── Gesto puntual ────────────────────────────────────────────
-            gesto = detectar_gesto(hand_landmarks.landmark)
-            if gesto and (ahora - tiempos[jugador]["gesto"]) > COOLDOWN_GESTO:
-                enviar(jugador, gesto)
-                ultimos[jugador]["gesto"]     = gesto
-                tiempos[jugador]["gesto"]     = ahora
-                print(f"{jugador} → {gesto}")
+            # ── Gesto puntual (solo si hay gesto y cooldown) ───────────────
+            if gesto_actual != "NONE" and (ahora - tiempos[jugador]["gesto"]) > COOLDOWN_GESTO:
+                enviar_estado(jugador, munieca_x, munieca_y, gesto_actual)
+                tiempos[jugador]["gesto"] = ahora
+                print(f"{jugador} → {gesto_actual}")
 
     # ── HUD estado por jugador ─────────────────────────────────────────────
     for jugador, color in COLORES.items():

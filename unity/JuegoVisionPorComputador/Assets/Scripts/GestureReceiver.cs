@@ -1,31 +1,25 @@
 using System;
+using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using UnityEngine;
-
-// GestureReceiver v2 — recibe mensajes UDP con formato "P1:JUMP", "P2:LEFT", etc.
-// y dispara eventos separados para cada jugador.
-
+using System.Globalization;
 public class GestureReceiver : MonoBehaviour
 {
     [Header("Configuración UDP")]
     public int port = 5052;
 
-    // ── Eventos por jugador ─────────────────────────────────────────────────
-    public static event Action<string> OnGestureP1;
-    public static event Action<string> OnGestureP2;
+    // Último estado recibido (thread-safe)
+    public static (float x, float y, string gesture) Player1State = (0.75f, 0.5f, "NONE");
+    public static (float x, float y, string gesture) Player2State = (0.25f, 0.5f, "NONE");
 
-    // ── Variables internas ──────────────────────────────────────────────────
     private UdpClient udpClient;
     private Thread receiveThread;
     private bool isRunning = false;
 
-    // Buffer thread-safe para pasar mensajes al hilo principal
-    private string pendingPlayer = null;
-    private string pendingMessage = null;
-    private readonly object bufferLock = new object();
+    private readonly ConcurrentQueue<string> messageQueue = new();
 
     void Start()
     {
@@ -35,7 +29,7 @@ public class GestureReceiver : MonoBehaviour
             isRunning = true;
             receiveThread = new Thread(ReceiveLoop) { IsBackground = true };
             receiveThread.Start();
-            Debug.Log($"[GestureReceiver] Escuchando en puerto {port} — modo 2 jugadores");
+            Debug.Log($"[GestureReceiver] ✅ Escuchando puerto {port} - Nuevo sistema X/Y/G listo");
         }
         catch (Exception e)
         {
@@ -43,66 +37,55 @@ public class GestureReceiver : MonoBehaviour
         }
     }
 
-    // ── Hilo secundario: recibir paquetes ───────────────────────────────────
-    void ReceiveLoop()
+    private void ReceiveLoop()
     {
         IPEndPoint remoteEP = new IPEndPoint(IPAddress.Any, 0);
-
         while (isRunning)
         {
             try
             {
                 byte[] data = udpClient.Receive(ref remoteEP);
-                string message = Encoding.UTF8.GetString(data).Trim();
-
-                // Formato esperado: "P1:JUMP", "P2:LEFT", etc.
-                if (!string.IsNullOrEmpty(message) && message.Contains(":"))
-                {
-                    string[] parts = message.Split(':');
-                    if (parts.Length == 2)
-                    {
-                        lock (bufferLock)
-                        {
-                            pendingPlayer = parts[0];   // "P1" o "P2"
-                            pendingMessage = parts[1];   // "JUMP", "LEFT", etc.
-                        }
-                    }
-                }
+                string raw = Encoding.UTF8.GetString(data).Trim();
+                if (!string.IsNullOrEmpty(raw))
+                    messageQueue.Enqueue(raw);
             }
-            catch (SocketException) { }
-            catch (Exception e)
-            {
-                Debug.LogWarning($"[GestureReceiver] {e.Message}");
-            }
+            catch { }
         }
     }
 
-    // ── Hilo principal: despachar eventos ───────────────────────────────────
     void Update()
     {
-        string player, msg;
-
-        lock (bufferLock)
+        int processed = 0;
+        while (messageQueue.TryDequeue(out string raw))
         {
-            if (pendingPlayer == null) return;
-            player = pendingPlayer;
-            msg = pendingMessage;
-            pendingPlayer = null;
+            processed++;
+            if (!raw.Contains(":X:") || !raw.Contains(":Y:") || !raw.Contains(":G:")) continue;
+
+            string[] parts = raw.Split(':');
+            if (parts.Length != 7) continue;   // ← AQUÍ ESTABA EL ERROR (era < 8)
+
+            string player = parts[0].Trim();
+            float x = float.Parse(parts[2], System.Globalization.CultureInfo.InvariantCulture);
+            float y = float.Parse(parts[4], System.Globalization.CultureInfo.InvariantCulture);
+            string gesto = parts[6].Trim().ToUpper();
+
+            if (player == "P1")
+                Player1State = (x, y, gesto);
+            else if (player == "P2")
+                Player2State = (x, y, gesto);
+
+            // Debug útil (puedes comentarlo después)
+            // Debug.Log($"[Gesture] {player} → X:{x:F3} Y:{y:F3} G:{gesto}");
         }
 
-        Debug.Log($"[GestureReceiver] {player} → {msg}");
-
-        if (player == "P1")
-            OnGestureP1?.Invoke(msg);
-        else if (player == "P2")
-            OnGestureP2?.Invoke(msg);
+        if (processed > 0)
+            Debug.Log($"[GestureReceiver] Procesados {processed} mensajes este frame");
     }
 
     void OnDestroy()
     {
         isRunning = false;
         udpClient?.Close();
-        receiveThread?.Abort();
     }
 
     void OnApplicationQuit()
