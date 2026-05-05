@@ -21,6 +21,11 @@ public class GestureActions : MonoBehaviour
     public string paramJumping = "isJumping";
     public string paramShooting = "isShooting";
 
+    [Header("Crouch")]
+    public string paramCrouching = "isCrouching";   // nombre exacto en el Animator
+    public float crouchSpeedMultiplier = 0.6f;      // velocidad mientras agachado (60% normal)
+    private float normalMoveSpeed;                  // guarda la velocidad original
+
     [Header("Ground Detection")]
     public LayerMask groundLayer;
 
@@ -49,6 +54,7 @@ public class GestureActions : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        normalMoveSpeed = moveSpeed;
     }
 
     void Update()
@@ -83,10 +89,6 @@ public class GestureActions : MonoBehaviour
 
         CheckGrounded();
 
-        // ── ANIMACIONES ─────────────────────────────────────────────────────
-        bool isRunningNow = Mathf.Abs(rb.linearVelocity.x) > 0.2f && isGrounded;
-        anim.SetBool(paramRunning, isRunningNow);
-        anim.SetBool(paramJumping, !isGrounded);
 
         // ── SALTO (solo cuando levantas la mano y estás en el suelo) ────────
         if (y < 0.40f && isGrounded && Time.time - lastJumpTime > jumpCooldown)
@@ -95,9 +97,24 @@ public class GestureActions : MonoBehaviour
             lastJumpTime = Time.time;
         }
 
-        // ── GESTOS ──────────────────────────────────────────────────────────
-        if (gesto == "SHOOT") DoShoot();
-        else if (gesto == "ATTACK") DoAttack();
+        bool shouldCrouch = y > 0.65f;                  
+        anim.SetBool(paramCrouching, shouldCrouch);
+
+        // Velocidad reducida mientras está agachado
+        moveSpeed = shouldCrouch ? normalMoveSpeed * crouchSpeedMultiplier : normalMoveSpeed;
+
+        // ── GESTOS (Shoot y Attack) ───────────────────────────────────
+        if (gesto == "SHOOT")
+            DoShoot();
+        else if (gesto == "ATTACK")
+            DoAttack();
+
+        // ── ANIMACIONES ───────────────────────────────────────────────
+        CheckGrounded();   // ← Importante: debe estar antes de actualizar animaciones
+
+        bool isRunningNow = Mathf.Abs(rb.linearVelocity.x) > 0.2f && isGrounded;
+        anim.SetBool(paramRunning, isRunningNow);
+        anim.SetBool(paramJumping, !isGrounded);
     }
 
     void FixedUpdate()

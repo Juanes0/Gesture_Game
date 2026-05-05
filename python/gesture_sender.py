@@ -32,7 +32,7 @@ JUGADORES = {
         "right_max"  : 0.83,       # X < 0.67  → RIGHT
         "left_min"   : 0.67,       # X > 0.83  → LEFT
         "jump_threshold": 0.45,        # Y < 0.4 → JUMP (mano alta)
-        "crouch_threshold": 0.75,      # Y > 0.75 → CROUCH (mano baja)
+        "crouch_threshold": 0.65,      # Y > 0.75 → CROUCH (mano baja)
     },
     "P2": {
         "hand_label" : "Left",
@@ -41,7 +41,7 @@ JUGADORES = {
         "right_max"  : 0.33,       # X < 0.17  → RIGHT
         "left_min"   : 0.17,       # X > 0.33  → LEFT
         "jump_threshold": 0.45,        # Y < 0.4 → JUMP (mano alta)
-        "crouch_threshold": 0.75,      # Y > 0.75 → CROUCH (mano baja)
+        "crouch_threshold": 0.65,      # Y > 0.75 → CROUCH (mano baja)
     },
 }
 
@@ -76,7 +76,7 @@ def validar_mano(label_detectado, munieca_x, config):
     zona_ok  = (config["zona_min"] <= munieca_x <= config["zona_max"])
     return label_ok and zona_ok
 
-def enviar_estado(jugador, munieca_x, munieca_y, gesto="NONE"):
+def enviar_estado(jugador, munieca_x, munieca_y, gesto):
     mensaje = f"{jugador}:X:{munieca_x:.3f}:Y:{munieca_y:.3f}:G:{gesto}"
     sock.sendto(mensaje.encode('utf-8'), (UDP_IP, UDP_PORT))
 
