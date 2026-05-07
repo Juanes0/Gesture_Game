@@ -1,0 +1,808 @@
+fileFormatVersion: 2
+guid: 4c21bf6408642ae499e7210b84088f14
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6369816321845111402
+    second: Idle_Agachado_0
+  - first:
+      213: -7237832095690402421
+    second: Idle_Agachado_1
+  - first:
+      213: 3718736249915396519
+    second: Idle_Agachado_2
+  - first:
+      213: -2096570812492907879
+    second: Idle_Agachado_3
+  - first:
+      213: -4714364488133693281
+    second: Idle_Agachado_4
+  - first:
+      213: -3412333008875376246
+    second: Idle_Agachado_5
+  - first:
+      213: 6207423686634540484
+    second: Idle_Agachado_6
+  - first:
+      213: 6871396383367687311
+    second: Idle_Agachado_7
+  - first:
+      213: 627388137234100991
+    second: Idle_Agachado_8
+  - first:
+      213: -3834275110304424296
+    second: Idle_Agachado_9
+  - first:
+      213: 6466637680795040590
+    second: Idle_Agachado_10
+  - first:
+      213: -6845338045747775258
+    second: Idle_Agachado_11
+  - first:
+      213: 8416828432481515541
+    second: Idle_Agachado_12
+  - first:
+      213: 2773212586380537254
+    second: Idle_Agachado_13
+  - first:
+      213: -5425168206995538382
+    second: Idle_Agachado_14
+  - first:
+      213: 7380070596894866713
+    second: Idle_Agachado_15
+  - first:
+      213: 6858025993910489450
+    second: Idle_Agachado_16
+  - first:
+      213: 4135556059747506880
+    second: Idle_Agachado_17
+  - first:
+      213: 5687707844000189166
+    second: Idle_Agachado_18
+  - first:
+      213: 8261613533484509301
+    second: Idle_Agachado_19
+  - first:
+      213: -3880902561951232709
+    second: Idle_Agachado_20
+  - first:
+      213: 428435922296133091
+    second: Idle_Agachado_21
+  - first:
+      213: -1301302445060626217
+    second: Idle_Agachado_22
+  - first:
+      213: 1943387075876367288
+    second: Idle_Agachado_23
+  - first:
+      213: 7483742765301397777
+    second: Idle_Agachado_24
+  - first:
+      213: -8536199650868489362
+    second: Idle_Agachado_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 250
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Idle_Agachado_0
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1135
+        width: 274
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 695dfe3ddcdd997a0800000000000000
+      internalID: -6369816321845111402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_1
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 1134
+        width: 270
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b85d3708e0e0e8b90800000000000000
+      internalID: -7237832095690402421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_2
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 1134
+        width: 271
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a15395aaea9b9330800000000000000
+      internalID: 3718736249915396519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_3
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 1135
+        width: 277
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99a78e244fb77e2e0800000000000000
+      internalID: -2096570812492907879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_4
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 1135
+        width: 262
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f90331fc976339eb0800000000000000
+      internalID: -4714364488133693281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_5
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 660
+        width: 282
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a81b4ae2535f4a0d0800000000000000
+      internalID: -3412333008875376246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_6
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 662
+        width: 281
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cd823464f2352650800000000000000
+      internalID: 6207423686634540484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_7
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 659
+        width: 274
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8ce88dba9a1c5f50800000000000000
+      internalID: 6871396383367687311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_8
+      rect:
+        serializedVersion: 2
+        x: 975
+        y: 660
+        width: 272
+        height: 327
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff2f120df2ee4b800800000000000000
+      internalID: 627388137234100991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_9
+      rect:
+        serializedVersion: 2
+        x: 1276
+        y: 660
+        width: 279
+        height: 326
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89ede2f1a1be9cac0800000000000000
+      internalID: -3834275110304424296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_10
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 159
+        width: 289
+        height: 322
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4bb1fe75bc1eb950800000000000000
+      internalID: 6466637680795040590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_11
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 158
+        width: 284
+        height: 322
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e8bcb7c0597001a0800000000000000
+      internalID: -6845338045747775258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_12
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 159
+        width: 275
+        height: 322
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 518f7757dd49ec470800000000000000
+      internalID: 8416828432481515541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_13
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 159
+        width: 282
+        height: 322
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6adaad9772e6c7620800000000000000
+      internalID: 2773212586380537254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_14
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 161
+        width: 287
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23eb94f624ee5b4b0800000000000000
+      internalID: -5425168206995538382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_25
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 2080
+        width: 261
+        height: 353
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3be0a65b75748140ab658c42bf4417d
+      internalID: 422284791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_26
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 2079
+        width: 272
+        height: 358
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbd1d40f36ffaf34d97e915f54bcf9b8
+      internalID: 47050988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_27
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 2080
+        width: 261
+        height: 357
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a2ab73825f41564aa45c373be4421d9
+      internalID: 104396979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_28
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 2082
+        width: 269
+        height: 355
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87e405297fb63594caa1f7adb2192557
+      internalID: -736381080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_29
+      rect:
+        serializedVersion: 2
+        x: 1332
+        y: 2082
+        width: 258
+        height: 355
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c92141a4c0a66ed40be71f9945120477
+      internalID: 1876070852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_30
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1609
+        width: 275
+        height: 339
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b95c4a0928f4a9242aaf34ad9d3d9e3f
+      internalID: -521395194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_31
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 1610
+        width: 266
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d009e5e037c0b048b9e551afac20597
+      internalID: -603648647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_32
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 1611
+        width: 272
+        height: 338
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d6ec29ee537cc94386de59d7a46ced8
+      internalID: -1109035859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_33
+      rect:
+        serializedVersion: 2
+        x: 1014
+        y: 1608
+        width: 274
+        height: 339
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cce19da725a00854d97c5008b7033aff
+      internalID: 687195348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_Agachado_34
+      rect:
+        serializedVersion: 2
+        x: 1319
+        y: 1609
+        width: 268
+        height: 338
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fd335e592ae6b64ebed2ee3821fc0ea
+      internalID: -908697454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: acd0cb9a0ce333542b2fdc677cd26530
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":160.0,"y":218.0},"gridSpriteOffset":{"x":65.0,"y":47.0},"gridSpritePadding":{"x":30.0,"y":70.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Idle_Agachado_0: -6369816321845111402
+      Idle_Agachado_1: -7237832095690402421
+      Idle_Agachado_10: 6466637680795040590
+      Idle_Agachado_11: -6845338045747775258
+      Idle_Agachado_12: 8416828432481515541
+      Idle_Agachado_13: 2773212586380537254
+      Idle_Agachado_14: -5425168206995538382
+      Idle_Agachado_15: 7380070596894866713
+      Idle_Agachado_16: 6858025993910489450
+      Idle_Agachado_17: 4135556059747506880
+      Idle_Agachado_18: 5687707844000189166
+      Idle_Agachado_19: 8261613533484509301
+      Idle_Agachado_2: 3718736249915396519
+      Idle_Agachado_20: -3880902561951232709
+      Idle_Agachado_21: 428435922296133091
+      Idle_Agachado_22: -1301302445060626217
+      Idle_Agachado_23: 1943387075876367288
+      Idle_Agachado_24: 7483742765301397777
+      Idle_Agachado_25: 422284791
+      Idle_Agachado_26: 47050988
+      Idle_Agachado_27: 104396979
+      Idle_Agachado_28: -736381080
+      Idle_Agachado_29: 1876070852
+      Idle_Agachado_3: -2096570812492907879
+      Idle_Agachado_30: -521395194
+      Idle_Agachado_31: -603648647
+      Idle_Agachado_32: -1109035859
+      Idle_Agachado_33: 687195348
+      Idle_Agachado_34: -908697454
+      Idle_Agachado_4: -4714364488133693281
+      Idle_Agachado_5: -3412333008875376246
+      Idle_Agachado_6: 6207423686634540484
+      Idle_Agachado_7: 6871396383367687311
+      Idle_Agachado_8: 627388137234100991
+      Idle_Agachado_9: -3834275110304424296
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

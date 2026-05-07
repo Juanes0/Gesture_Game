@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 120
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,6 +96,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -103,7 +129,7 @@ TextureImporter:
       name: Sprite_Shoot_Basic_0
       rect:
         serializedVersion: 2
-        x: 23
+        x: 25
         y: 662
         width: 150
         height: 254
@@ -125,7 +151,7 @@ TextureImporter:
       name: Sprite_Shoot_Basic_1
       rect:
         serializedVersion: 2
-        x: 213
+        x: 214
         y: 662
         width: 150
         height: 254
@@ -147,7 +173,7 @@ TextureImporter:
       name: Sprite_Shoot_Basic_3
       rect:
         serializedVersion: 2
-        x: 401
+        x: 405
         y: 662
         width: 150
         height: 254
@@ -169,7 +195,7 @@ TextureImporter:
       name: Sprite_Shoot_Basic_4
       rect:
         serializedVersion: 2
-        x: 599
+        x: 595
         y: 662
         width: 150
         height: 254
@@ -191,9 +217,9 @@ TextureImporter:
       name: Sprite_Shoot_Basic_5
       rect:
         serializedVersion: 2
-        x: 802
+        x: 788
         y: 662
-        width: 200
+        width: 210
         height: 254
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -213,9 +239,9 @@ TextureImporter:
       name: Sprite_Shoot_Basic_8
       rect:
         serializedVersion: 2
-        x: 1077
+        x: 1067
         y: 662
-        width: 177
+        width: 188
         height: 254
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -235,7 +261,7 @@ TextureImporter:
       name: Sprite_Shoot_Basic_9
       rect:
         serializedVersion: 2
-        x: 1304
+        x: 1298
         y: 662
         width: 221
         height: 254
@@ -257,9 +283,9 @@ TextureImporter:
       name: Sprite_Shoot_Basic_11
       rect:
         serializedVersion: 2
-        x: 34
+        x: 25
         y: 408
-        width: 227
+        width: 211
         height: 254
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -279,9 +305,9 @@ TextureImporter:
       name: Sprite_Shoot_Basic_13
       rect:
         serializedVersion: 2
-        x: 268
-        y: 408
-        width: 290
+        x: 262
+        y: 405
+        width: 277
         height: 254
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -301,9 +327,9 @@ TextureImporter:
       name: Sprite_Shoot_Basic_15
       rect:
         serializedVersion: 2
-        x: 560
-        y: 408
-        width: 228
+        x: 538
+        y: 406
+        width: 313
         height: 254
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -323,8 +349,8 @@ TextureImporter:
       name: Sprite_Shoot_Basic_17
       rect:
         serializedVersion: 2
-        x: 871
-        y: 408
+        x: 857
+        y: 407
         width: 264
         height: 254
       alignment: 0
@@ -345,8 +371,8 @@ TextureImporter:
       name: Sprite_Shoot_Basic_19
       rect:
         serializedVersion: 2
-        x: 1138
-        y: 408
+        x: 1140
+        y: 403
         width: 227
         height: 254
       alignment: 0
@@ -367,10 +393,10 @@ TextureImporter:
       name: Sprite_Shoot_Basic_22
       rect:
         serializedVersion: 2
-        x: 26
-        y: 180
+        x: 25
+        y: 203
         width: 243
-        height: 228
+        height: 188
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -389,10 +415,10 @@ TextureImporter:
       name: Sprite_Shoot_Basic_25
       rect:
         serializedVersion: 2
-        x: 396
-        y: 185
-        width: 219
-        height: 223
+        x: 381
+        y: 201
+        width: 256
+        height: 194
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 1, z: 0, w: 0}
@@ -411,10 +437,10 @@ TextureImporter:
       name: Sprite_Shoot_Basic_26
       rect:
         serializedVersion: 2
-        x: 695
-        y: 186
-        width: 220
-        height: 222
+        x: 674
+        y: 199
+        width: 223
+        height: 194
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -433,12 +459,12 @@ TextureImporter:
       name: Sprite_Shoot_Basic_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 108
-        width: 1648
-        height: 808
+        x: 943
+        y: 267
+        width: 260
+        height: 60
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -447,6 +473,28 @@ TextureImporter:
       bones: []
       spriteID: 28341fd731406584fb6a3ccee91f906b
       internalID: -1328410916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Shoot_Basic_6
+      rect:
+        serializedVersion: 2
+        x: 1577
+        y: 246
+        width: 87
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 998ec739b9550b94c8c813ef9d2a7a60
+      internalID: 776562845
       vertices: []
       indices: 
       edges: []

@@ -1,0 +1,920 @@
+fileFormatVersion: 2
+guid: 567b21cc9cbda1c45b7f34d1493b0b54
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5615458603613306055
+    second: Walk_Crouch_0
+  - first:
+      213: 7826607735200836538
+    second: Walk_Crouch_1
+  - first:
+      213: -3810411005764215762
+    second: Walk_Crouch_2
+  - first:
+      213: -7710230349433338378
+    second: Walk_Crouch_3
+  - first:
+      213: -4001350594801024790
+    second: Walk_Crouch_4
+  - first:
+      213: -2420372313312652086
+    second: Walk_Crouch_5
+  - first:
+      213: -4717439380913733331
+    second: Walk_Crouch_6
+  - first:
+      213: -4378707256330071053
+    second: Walk_Crouch_7
+  - first:
+      213: -5870113981422864924
+    second: Walk_Crouch_8
+  - first:
+      213: -7701618348637513570
+    second: Walk_Crouch_9
+  - first:
+      213: -1707543858715158279
+    second: Walk_Crouch_10
+  - first:
+      213: -3606330872982353913
+    second: Walk_Crouch_11
+  - first:
+      213: -8919363797989573592
+    second: Walk_Crouch_12
+  - first:
+      213: -6063770461116686645
+    second: Walk_Crouch_13
+  - first:
+      213: 2928870925182966082
+    second: Walk_Crouch_14
+  - first:
+      213: 751659286707270358
+    second: Walk_Crouch_15
+  - first:
+      213: -2005468102397632101
+    second: Walk_Crouch_16
+  - first:
+      213: -1861451087191918731
+    second: Walk_Crouch_17
+  - first:
+      213: -1502330138434083246
+    second: Walk_Crouch_18
+  - first:
+      213: -2207797523530275955
+    second: Walk_Crouch_19
+  - first:
+      213: -8664104268722467112
+    second: Walk_Crouch_20
+  - first:
+      213: -8678934241279878458
+    second: Walk_Crouch_21
+  - first:
+      213: 4117474375281744425
+    second: Walk_Crouch_22
+  - first:
+      213: -8572972351884297123
+    second: Walk_Crouch_23
+  - first:
+      213: -3704132029497129323
+    second: Walk_Crouch_24
+  - first:
+      213: 4011184677404704588
+    second: Walk_Crouch_25
+  - first:
+      213: 2864092599170954491
+    second: Walk_Crouch_26
+  - first:
+      213: -8978306816189872907
+    second: Walk_Crouch_27
+  - first:
+      213: -752606864101915726
+    second: Walk_Crouch_28
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Walk_Crouch_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1301
+        width: 178
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 933c7b8e622e112b0800000000000000
+      internalID: -5615458603613306055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_1
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 1301
+        width: 193
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abb68fc9442bd9c60800000000000000
+      internalID: 7826607735200836538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_2
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 1301
+        width: 203
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2c5f21f063be1bc0800000000000000
+      internalID: -3810411005764215762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_3
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 1301
+        width: 195
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f507950952cff490800000000000000
+      internalID: -7710230349433338378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_4
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 1301
+        width: 196
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae0461785d85878c0800000000000000
+      internalID: -4001350594801024790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_5
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1062
+        width: 180
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac41fc8643c196ed0800000000000000
+      internalID: -2420372313312652086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 823
+        width: 182
+        height: 164
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d21c23b80e9488eb0800000000000000
+      internalID: -4717439380913733331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_7
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 823
+        width: 198
+        height: 164
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f3550323f4bb33c0800000000000000
+      internalID: -4378707256330071053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_8
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 1062
+        width: 192
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e57c326f6a298ea0800000000000000
+      internalID: -5870113981422864924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_9
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 1062
+        width: 196
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9894d5baea5e1590800000000000000
+      internalID: -7701618348637513570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_10
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 823
+        width: 191
+        height: 164
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f812ee48e59d48e0800000000000000
+      internalID: -1707543858715158279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_11
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 1062
+        width: 199
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 708cc5d9d2db3fdc0800000000000000
+      internalID: -3606330872982353913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_12
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 823
+        width: 200
+        height: 164
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82c3a5ee1ed083480800000000000000
+      internalID: -8919363797989573592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_13
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 1062
+        width: 198
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bce12a194e829dba0800000000000000
+      internalID: -6063770461116686645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_14
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 583
+        width: 179
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2491080b69075a820800000000000000
+      internalID: 2928870925182966082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_15
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 583
+        width: 189
+        height: 163
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d27f48832e6e6a00800000000000000
+      internalID: 751659286707270358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_16
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 584
+        width: 191
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b916634e2652b24e0800000000000000
+      internalID: -2005468102397632101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_17
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 584
+        width: 196
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 577392d391cca26e0800000000000000
+      internalID: -1861451087191918731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_18
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 584
+        width: 198
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 256e543e2b6a62be0800000000000000
+      internalID: -1502330138434083246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 342
+        width: 179
+        height: 171
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d83adf989d35c51e0800000000000000
+      internalID: -2207797523530275955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_20
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 342
+        width: 188
+        height: 171
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8de0add621be2c780800000000000000
+      internalID: -8664104268722467112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_21
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 342
+        width: 183
+        height: 171
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cad98f5a4b3e8780800000000000000
+      internalID: -8678934241279878458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_22
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 342
+        width: 188
+        height: 171
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92a11760125342930800000000000000
+      internalID: 4117474375281744425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_23
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 102
+        width: 187
+        height: 164
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5cf0b8411fa60980800000000000000
+      internalID: -8572972351884297123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_24
+      rect:
+        serializedVersion: 2
+        x: 761
+        y: 342
+        width: 197
+        height: 171
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5964da46b87489cc0800000000000000
+      internalID: -3704132029497129323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 102
+        width: 179
+        height: 163
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4f723146379aa730800000000000000
+      internalID: 4011184677404704588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_26
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 102
+        width: 191
+        height: 164
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf4f8695b0d4fb720800000000000000
+      internalID: 2864092599170954491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_27
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 102
+        width: 191
+        height: 163
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f4c8801585a66380800000000000000
+      internalID: -8978306816189872907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_28
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 102
+        width: 187
+        height: 163
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b34fa96b043e85f0800000000000000
+      internalID: -752606864101915726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Crouch_29
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 823
+        width: 195
+        height: 164
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 165e573d42201cc418f051775448d8bd
+      internalID: -688626591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 174b008e6b02b234ea5c8e6b00fbd334
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Walk_Crouch_0: -5615458603613306055
+      Walk_Crouch_1: 7826607735200836538
+      Walk_Crouch_10: -1707543858715158279
+      Walk_Crouch_11: -3606330872982353913
+      Walk_Crouch_12: -8919363797989573592
+      Walk_Crouch_13: -6063770461116686645
+      Walk_Crouch_14: 2928870925182966082
+      Walk_Crouch_15: 751659286707270358
+      Walk_Crouch_16: -2005468102397632101
+      Walk_Crouch_17: -1861451087191918731
+      Walk_Crouch_18: -1502330138434083246
+      Walk_Crouch_19: -2207797523530275955
+      Walk_Crouch_2: -3810411005764215762
+      Walk_Crouch_20: -8664104268722467112
+      Walk_Crouch_21: -8678934241279878458
+      Walk_Crouch_22: 4117474375281744425
+      Walk_Crouch_23: -8572972351884297123
+      Walk_Crouch_24: -3704132029497129323
+      Walk_Crouch_25: 4011184677404704588
+      Walk_Crouch_26: 2864092599170954491
+      Walk_Crouch_27: -8978306816189872907
+      Walk_Crouch_28: -752606864101915726
+      Walk_Crouch_29: -688626591
+      Walk_Crouch_3: -7710230349433338378
+      Walk_Crouch_4: -4001350594801024790
+      Walk_Crouch_5: -2420372313312652086
+      Walk_Crouch_6: -4717439380913733331
+      Walk_Crouch_7: -4378707256330071053
+      Walk_Crouch_8: -5870113981422864924
+      Walk_Crouch_9: -7701618348637513570
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

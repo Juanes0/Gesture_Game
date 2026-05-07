@@ -19,7 +19,15 @@ public class GestureActions : MonoBehaviour
     [Header("Animación")]
     public string paramRunning = "isRunning";
     public string paramJumping = "isJumping";
+    
+
+    [Header("Shoot Settings - Estilo Cuphead")]
     public string paramShooting = "isShooting";
+    public float shootCooldown = 0.25f;           // Tiempo entre disparos (ajusta para que se sienta como Cuphead)
+    public float shootAnimationDuration = 0.4f;   // Duración de la animación de disparo
+
+    private float lastShootTime = 0f;
+    private bool isShooting = false;
 
     [Header("Crouch")]
     public string paramCrouching = "isCrouching";   // nombre exacto en el Animator
@@ -35,6 +43,17 @@ public class GestureActions : MonoBehaviour
     [Tooltip("Cuánto debe penetrar el raycast en el suelo para considerarlo grounded")]
     public float raycastDistance = 0.2f;   // pequeño margen (0.1f ~ 0.3f suele ser bueno)
 
+    [Header("Collider Crouch")]
+    public BoxCollider2D bodyCollider;     // Arrastra aquí el collider del jugador
+
+    // Valores originales (se guardan en Start)
+    private Vector2 originalColliderSize;
+    private Vector2 originalColliderOffset;
+
+    // Valores cuando está agachado (ajústalos según tu sprite)
+    public Vector2 crouchColliderSize = new Vector2(1.0f, 0.6f);      // ancho x alto
+    public Vector2 crouchColliderOffset = new Vector2(0f, -0.3f);
+        
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Animator anim;
@@ -55,6 +74,11 @@ public class GestureActions : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         normalMoveSpeed = moveSpeed;
+        if (bodyCollider != null)
+        {
+            originalColliderSize = bodyCollider.size;
+            originalColliderOffset = bodyCollider.offset;
+        }
     }
 
     void Update()
@@ -84,6 +108,8 @@ public class GestureActions : MonoBehaviour
         }
         moveDirection = moveDir;
 
+
+
         if (Mathf.Abs(moveDirection) > 0.1f)
             Flip(moveDirection > 0);
 
@@ -97,17 +123,48 @@ public class GestureActions : MonoBehaviour
             lastJumpTime = Time.time;
         }
 
-        bool shouldCrouch = y > 0.65f;                  
+        // ── AGACHARSE (CROUCH) ────────────────────────────────────────
+        bool shouldCrouch = y > 0.75f;
+
         anim.SetBool(paramCrouching, shouldCrouch);
 
-        // Velocidad reducida mientras está agachado
+        if (bodyCollider != null)
+        {
+            if (shouldCrouch)
+            {
+                bodyCollider.size = crouchColliderSize;
+                bodyCollider.offset = crouchColliderOffset;
+            }
+            else
+            {
+                bodyCollider.size = originalColliderSize;
+                bodyCollider.offset = originalColliderOffset;
+            }
+        }
+
+        bool wantsToShoot = (gesto == "SHOOT") && isGrounded;   // Solo dispara en el piso
+
+        if (wantsToShoot && Time.time - lastShootTime > shootCooldown)
+        {
+            DoShoot();
+            lastShootTime = Time.time;
+        }
+
+        // Apagar la animación de disparo después de su duración
+        if (isShooting && Time.time - lastShootTime > shootAnimationDuration)
+        {
+            isShooting = false;
+            anim.SetBool(paramShooting, false);
+        }
+
+        // Velocidad reducida
         moveSpeed = shouldCrouch ? normalMoveSpeed * crouchSpeedMultiplier : normalMoveSpeed;
 
-        // ── GESTOS (Shoot y Attack) ───────────────────────────────────
-        if (gesto == "SHOOT")
-            DoShoot();
-        else if (gesto == "ATTACK")
-            DoAttack();
+        // Animación de correr agachado
+        bool isCrouchRunning = shouldCrouch && Mathf.Abs(rb.linearVelocity.x) > 0.2f && isGrounded;
+
+        anim.SetBool("isCrouchRunning", isCrouchRunning);   // ← Nuevo parámetro
+
 
         // ── ANIMACIONES ───────────────────────────────────────────────
         CheckGrounded();   // ← Importante: debe estar antes de actualizar animaciones
@@ -129,17 +186,31 @@ public class GestureActions : MonoBehaviour
         isGrounded = false;
     }
 
-    void DoAttack() { Debug.Log($"[{playerNumber}] ATTACK"); }
     void DoShoot()
     {
+        if (!isGrounded) return;
+
+        isShooting = true;
         anim.SetBool(paramShooting, true);
-        Invoke(nameof(StopShooting), 0.6f);
+
         if (bulletPrefab == null) return;
-        Vector3 spawn = transform.position + new Vector3(facingRight ? 0.7f : -0.7f, 0.2f, 0);
-        GameObject bul = Instantiate(bulletPrefab, spawn, Quaternion.identity);
-        if (bul.GetComponent<Rigidbody2D>() is Rigidbody2D bRb)
-            bRb.linearVelocity = new Vector2(facingRight ? bulletSpeed : -bulletSpeed, 0);
-        Destroy(bul, 3f);
+
+        // Posición de spawn (desde el cañón)
+        Vector3 spawnOffset = new Vector3(facingRight ? 0.85f : -0.85f, 0.12f, 0f);
+        Vector3 spawnPos = transform.position + spawnOffset;
+
+        GameObject bullet = Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        bulletScript.Init(facingRight ? 1f : -1f);
+
+
+        // Aplicar velocidad
+        Rigidbody2D bRb = bullet.GetComponent<Rigidbody2D>();
+        if (bRb != null)
+        {
+            float direction = facingRight ? 1f : -1f;
+            bRb.linearVelocity = new Vector2(direction * bulletSpeed, 0f);
+        }
     }
     void StopShooting() => anim.SetBool(paramShooting, false);
 
